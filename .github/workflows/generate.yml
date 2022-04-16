@@ -10,14 +10,15 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Prepare
+            - name: Checkout
               uses: actions/checkout@v2
 
-            - name: Generate
+            - name: Build
               uses: bridge-core/build-mc-project@main
               with:
                   project-name: cpp
                   package-type: mcaddon
+                  compiler-config: .bridge/compiler/build.json
 
             - name: Release
               uses: softprops/action-gh-release@v1
