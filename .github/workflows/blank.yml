@@ -1,0 +1,28 @@
+name: Build Project
+
+on:
+    release:
+        types:
+            - created
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Prepare
+              uses: actions/checkout@v2
+
+            - name: Generate
+              uses: bridge-core/build-mc-project@main
+              with:
+                  project-name: cpp
+                  package-type: mcaddon
+
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              if: startsWith(github.ref, 'refs/tags/')
+              with:
+                  files: cpp.mcaddon
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
