@@ -1,0 +1,27 @@
+{
+	"format_version": "1.18.10",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:copper_pillar"
+		},
+		"components": {
+			"minecraft:material_instances": {
+				"down": {
+					"texture": "copper_pillar_bottom",
+					"render_method": "opaque"
+				},
+				"up": {
+					"texture": "copper_pillar_bottom",
+					"render_method": "opaque"
+				},
+				"sides": {
+					"texture": "copper_pillar"
+				}
+			},
+			"bridge:log_rotate_on_place": {
+				"rotation_from": "block_face"
+			},
+			"minecraft:unit_cube": {}
+		}
+	}
+}

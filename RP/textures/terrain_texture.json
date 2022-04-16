@@ -1,0 +1,50 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "cpp",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"wire_map_0": {
+			"textures": "textures/blocks/wire_map_0"
+		},
+		"wire_map_1": {
+			"textures": "textures/blocks/wire_map_1"
+		},
+		"wire_map_2": {
+			"textures": "textures/blocks/wire_map_2"
+		},
+		"wire_map_3": {
+			"textures": "textures/blocks/wire_map_3"
+		},
+		"wire_map_4": {
+			"textures": "textures/blocks/wire_map_4"
+		},
+		"copper_pillar": {
+			"textures": "textures/blocks/pillar/copper_pillar"
+		},
+		"copper_pillar_bottom": {
+			"textures": "textures/blocks/pillar/copper_pillar"
+		},
+		"exposed_pillar": {
+			"textures": "textures/blocks/pillar/exposed_copper_pillar"
+		},
+		"exposed_pillar_bottom": {
+			"textures": "textures/blocks/pillar/exposed_copper_bottom"
+		},
+		"weathered_pillar": {
+			"textures": "textures/blocks/pillar/weathered_copper_pillar"
+		},
+		"weathered_pillar_bottom": {
+			"textures": "textures/blocks/pillar/weathered_copper_bottom"
+		},
+		"oxidised_pillar": {
+			"textures": "textures/blocks/pillar/oxidized_copper_pillar"
+		},
+		"oxidised_pillar_bottom": {
+			"textures": "textures/blocks/pillar/oxidized_copper_pillar"
+		},
+		"parv_charged_rod": {
+			"textures": "textures/blocks/charged_rod"
+		}
+	}
+}

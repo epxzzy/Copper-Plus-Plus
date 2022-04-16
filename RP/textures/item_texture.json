@@ -1,0 +1,12 @@
+{
+	"resource_pack_name": "cpp",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"dust": {
+			"textures": "textures/items/copper_dust"
+		},
+		"meter": {
+			"textures": "textures/items/meter"
+		}
+	}
+}
