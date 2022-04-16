@@ -1,0 +1,17 @@
+{
+	"plugins": [
+		[
+			"typeScript",
+			{
+				"inlineSourceMap": true
+			}
+		],
+		[
+			"rewriteForPackaging",
+			{
+				"packName": "cpp",
+				"format": "mcaddon"
+			}
+		]
+	]
+}
