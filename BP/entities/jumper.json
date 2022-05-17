@@ -1,0 +1,204 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "parv:jumpester",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false,
+			"runtime_identifier": "minecraft:shulker",
+			"animations": {
+				"checkjump": "controller.animation.checkjump"
+			},
+			"scripts": {
+				"animate": [
+					"checkjump"
+				]
+			}
+		},
+		"component_groups": {
+			"jumper:despawn": {
+				"minecraft:instant_despawn": {}
+			},
+			"jumper:active": {
+				"minecraft:timer": {
+					"looping": true,
+					"time": [
+						0,
+						0
+					],
+					"time_down_event": {
+						"event": "jumper:power"
+					}
+				}
+			},
+			"jumper:inactive": {
+				"minecraft:timer": {
+					"looping": true,
+					"time": [
+						0,
+						0
+					],
+					"time_down_event": {
+						"event": "jumper:unpower"
+					}
+				}
+			}
+		},
+		"components": {
+			"minecraft:teleport": {
+				"random_teleports": false,
+				"target_teleport_chance": 0,
+				"target_distance": 0,
+				"light_teleport_chance": 0,
+				"dark_teleport_chance": 0,
+				"max_random_teleport_time": 0,
+				"min_random_teleport_time": 0,
+				"random_teleport_cube": [
+					0,
+					0,
+					0
+				]
+			},
+			"minecraft:on_hurt_by_player": {
+				"event": "jumper:die"
+			},
+			"minecraft:health": {
+				"value": 1,
+				"max": 1
+			},
+			"minecraft:type_family": {
+				"family": [
+					"inanimate"
+				]
+			},
+			"minecraft:collision_box": {
+				"height": 15,
+				"width": 14
+			},
+			"minecraft:inside_block_notifier": {
+				"block_list": [
+					{
+						"block": {
+							"name": "parv:jumper"
+						},
+						"exited_block_event": {
+							"event": "jumper:die"
+						},
+						"entered_block_event": {
+							"event": "minecraft:entity_spawned"
+						}
+					}
+				]
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"trigger": "jumper:deactivate"
+			},
+			"jumper:die": {
+				"add": {
+					"component_groups": [
+						"jumper:despawn"
+					]
+				}
+			},
+			"jumper:power": {
+				"run_command": {
+					"command": [
+						"/fill ~~~-1 ~~~-1 powered_repeater 0 replace unpowered_repeater 0",
+						"/fill ~~~-1 ~~~-1 powered_repeater 4 replace unpowered_repeater 4",
+						"/fill ~~~-1 ~~~-1 powered_repeater 8 replace unpowered_repeater 8",
+						"/fill ~~~-1 ~~~-1 powered_repeater 12 replace unpowered_repeater 12",
+						"/fill ~1~~ ~1~~ powered_repeater 1 replace unpowered_repeater 1",
+						"/fill ~1~~ ~1~~ powered_repeater 5 replace unpowered_repeater 5",
+						"/fill ~1~~ ~1~~ powered_repeater 9 replace unpowered_repeater 9",
+						"/fill ~1~~ ~1~~ powered_repeater 13 replace unpowered_repeater 13",
+						"/fill ~~~-1 ~~~1 powered_repeater 2 replace unpowered_repeater 2",
+						"/fill ~~~-1 ~~~1 powered_repeater 6 replace unpowered_repeater 6",
+						"/fill ~~~-1 ~~~1 powered_repeater 10 replace unpowered_repeater 10",
+						"/fill ~~~-1 ~~~1 powered_repeater 14 replace unpowered_repeater 14",
+						"/fill ~-1~~ ~-1~~ powered_repeater 3 replace unpowered_repeater 3",
+						"/fill ~-1~~ ~-1~~ powered_repeater 7 replace unpowered_repeater 7",
+						"/fill ~-1~~ ~-1~~ powered_repeater 11 replace unpowered_repeater 11",
+						"/fill ~-1~~ ~-1~~ powered_repeater 15 replace unpowered_repeater 15",
+						"/fill ~~~-1 ~~~-1 powered_comparator 0 replace unpowered_comparator 0",
+						"/fill ~1~~ ~1~~ powered_comparator 1 replace unpowered_comparator 1",
+						"/fill ~~~1 ~~~1 powered_comparator 2 replace unpowered_comparator 2",
+						"/fill ~-1~~ ~-1~~ powered_comparator 3 replace unpowered_comparator 3",
+						"/fill ~~~-1 ~~~-1 powered_comparator 4 replace unpowered_comparator 4",
+						"/fill ~1~~ ~1~~ powered_comparator 5 replace unpowered_comparator 5",
+						"/fill ~~~1 ~~~1 powered_comparator 6 replace unpowered_comparator 6",
+						"/fill ~-1~~ ~-1~~ powered_comparator 7 replace unpowered_comparator 7"
+					]
+				}
+			},
+			"jumper:unpower": {
+				"run_command": {
+					"command": [
+						"/fill ~~~-1 ~~~-1 unpowered_repeater 0 replace powered_repeater 0",
+						"/fill ~~~-1 ~~~-1 unpowered_repeater 4 replace powered_repeater 4",
+						"/fill ~~~-1 ~~~-1 unpowered_repeater 8 replace powered_repeater 8",
+						"/fill ~~~-1 ~~~-1 unpowered_repeater 12 replace powered_repeater 12",
+						"/fill ~1~~ ~1~~ unpowered_repeater 1 replace powered_repeater 1",
+						"/fill ~1~~ ~1~~ unpowered_repeater 5 replace powered_repeater 5",
+						"/fill ~1~~ ~1~~ unpowered_repeater 9 replace powered_repeater 9",
+						"/fill ~1~~ ~1~~ unpowered_repeater 13 replace powered_repeater 13",
+						"/fill ~~~-1 ~~~1 unpowered_repeater 2 replace powered_repeater 2",
+						"/fill ~~~-1 ~~~1 unpowered_repeater 6 replace powered_repeater 6",
+						"/fill ~~~-1 ~~~1 unpowered_repeater 10 replace powered_repeater 10",
+						"/fill ~~~-1 ~~~1 unpowered_repeater 14 replace powered_repeater 14",
+						"/fill ~-1~~ ~-1~~ unpowered_repeater 3 replace powered_repeater 3",
+						"/fill ~-1~~ ~-1~~ unpowered_repeater 7 replace powered_repeater 7",
+						"/fill ~-1~~ ~-1~~ unpowered_repeater 11 replace powered_repeater 11",
+						"/fill ~-1~~ ~-1~~ unpowered_repeater 15 replace powered_repeater 15",
+						"/fill ~~~-1 ~~~-1 unpowered_comparator 0 replace powered_comparator 0",
+						"/fill ~1~~ ~1~~ unpowered_comparator 1 replace powered_comparator 1",
+						"/fill ~~~1 ~~~1 unpowered_comparator 2 replace powered_comparator 2",
+						"/fill ~-1~~ ~-1~~ unpowered_comparator 3 replace powered_comparator 3",
+						"/fill ~~~-1 ~~~-1 unpowered_comparator 4 replace powered_comparator 4",
+						"/fill ~1~~ ~1~~ unpowered_comparator 5 replace powered_comparator 5",
+						"/fill ~~~1 ~~~1 unpowered_comparator 6 replace powered_comparator 6",
+						"/fill ~-1~~ ~-1~~ unpowered_comparator 7 replace powered_comparator 7"
+					]
+				}
+			},
+			"jumper:deactivate": {
+				"sequence": [
+					{
+						"remove": {
+							"component_groups": [
+								"jumper:active"
+							]
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"jumper:inactive"
+							]
+						}
+					}
+				]
+			},
+			"jumper:activate": {
+				"sequence": [
+					{
+						"remove": {
+							"component_groups": [
+								"jumper:inactive"
+							]
+						}
+					},
+					{
+						"add": {
+							"component_groups": [
+								"jumper:active"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

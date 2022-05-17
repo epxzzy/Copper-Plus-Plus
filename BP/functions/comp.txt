@@ -1,0 +1,41 @@
+0 0 -1 // /setblock ~~~ powered_comparator 0
+0 0 -1 // /setblock ~~~ unpowered_comparator 0
+1 0 0 // /setblock ~~~ powered_comparator 1
+1 0 0 // /setblock ~~~ unpowered_comparator 1
+0 0 1 // /setblock ~~~ powered_comparator 2
+0 0 1 // /setblock ~~~ unpowered_comparator 2
+-1 0 0 // /setblock ~~~ powered_comparator 3
+-1 0 0 // /setblock ~~~ unpowered_comparator 3
+
+
+"/fill ~~~-1 ~~~-1 powered_comparator 0 replace unpowered_comparator 0",
+"/fill ~1~~ ~1~~ powered_comparator 1 replace unpowered_comparator 1",
+"/fill ~~~1 ~~~1 powered_comparator 2 replace unpowered_comparator 2",
+"/fill ~-1~~ ~-1~~ powered_comparator 3 replace unpowered_comparator 3",
+"/fill ~~~-1 ~~~-1 powered_comparator 4 replace unpowered_comparator 4",
+"/fill ~1~~ ~1~~ powered_comparator 5 replace unpowered_comparator 5",
+"/fill ~~~1 ~~~1 powered_comparator 6 replace unpowered_comparator 6",
+"/fill ~-1~~ ~-1~~ powered_comparator 7 replace unpowered_comparator 7"
+
+"/fill ~~~-1 ~~~-1 unpowered_comparator 0 replace powered_comparator 0",
+"/fill ~1~~ ~1~~ unpowered_comparator 1 replace powered_comparator 1",
+"/fill ~~~1 ~~~1 unpowered_comparator 2 replace powered_comparator 2",
+"/fill ~-1~~ ~-1~~ unpowered_comparator 3 replace powered_comparator 3",
+"/fill ~~~-1 ~~~-1 unpowered_comparator 4 replace powered_comparator 4",
+"/fill ~1~~ ~1~~ unpowered_comparator 5 replace powered_comparator 5",
+"/fill ~~~1 ~~~1 unpowered_comparator 6 replace powered_comparator 6",
+"/fill ~-1~~ ~-1~~ unpowered_comparator 7 replace powered_comparator 7"
+
+
+0 0 -1 // /setblock ~~~ powered_comparator 4
+0 0 -1 // /setblock ~~~ unpowered_comparator 4
+1 0 0 // /setblock ~~~ powered_comparator 5
+1 0 0 // /setblock ~~~ unpowered_comparator 5
+0 0 1 // /setblock ~~~ powered_comparator 6
+0 0 1 // /setblock ~~~ unpowered_comparator 6
+-1 0 0 // /setblock ~~~ powered_comparator 7
+-1 0 0 // /setblock ~~~ unpowered_comparator 7
+
+
+
+

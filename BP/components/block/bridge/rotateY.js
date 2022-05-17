@@ -23,7 +23,7 @@ export default function defineComponent({ name, template, schema }) {
 		]
 		create(
 			{
-				'bridge:block_rotation': [2, 3, 4, 5],
+				'parv:direction': [2, 3, 4, 5],
 			},
 			'minecraft:block/description/properties'
 		)
@@ -34,7 +34,7 @@ export default function defineComponent({ name, template, schema }) {
 					? rotationLookupFlipped
 					: rotationLookup
 				).map((rotation, i) => ({
-					condition: `query.block_property('bridge:block_rotation') == ${i + 2}`,
+					condition: `query.block_property('parv:direction') == ${i + 2}`,
 					components: {
 						'minecraft:rotation': rotation,
 					},
@@ -46,7 +46,7 @@ export default function defineComponent({ name, template, schema }) {
 		create(
 			{
 				'minecraft:on_player_placing': {
-					event: 'bridge:update_rotation',
+					event: 'parv:onplace',
 				},
 			},
 			'minecraft:block/components'
@@ -54,9 +54,9 @@ export default function defineComponent({ name, template, schema }) {
 
 		create(
 			{
-				'bridge:update_rotation': {
+				'parv:onplace': {
 					set_block_property: {
-						'bridge:block_rotation': 'query.cardinal_facing_2d',
+						'parv:direction': 'query.cardinal_facing_2d',
 					},
 				},
 			},

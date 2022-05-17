@@ -1,0 +1,52 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"parv66"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.2.9"
+			],
+			"dash": [
+				"0.8.11"
+			]
+		}
+	},
+	"header": {
+		"name": "cpp",
+		"description": "copper plus plus beta 1.2",
+		"min_engine_version": [
+			1,
+			17,
+			0
+		],
+		"uuid": "2c9e26cb-d654-40c3-9108-554c619f72fa",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "c77e6a20-d967-4d9f-a000-304af0a26d25",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "dac50e03-1951-4bc8-bb4a-9564b80a0ae2",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}
