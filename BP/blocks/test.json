@@ -1,0 +1,105 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:wire10dup",
+			"properties": {
+				"testblock:north": [
+					false,
+					true
+				],
+				"testblock:east": [
+					false,
+					true
+				],
+				"testblock:south": [
+					false,
+					true
+				],
+				"testblock:west": [
+					false,
+					true
+				],
+				"copper:isready": [
+					false,
+					true
+				]
+			}
+		},
+		"components": {
+			"tag:wire": {},
+			"tag:dust": {},
+			"minecraft:geometry": "geometry.wire",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "wire_map_10",
+					"render_method": "alpha_test",
+					"ambient_occlusion": false
+				}
+			},
+			"minecraft:block_light_absorption": 0,
+			"minecraft:breathability": "air",
+			"minecraft:unwalkable": true,
+			"minecraft:entity_collision": false,
+			"minecraft:pick_collision": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					1,
+					16
+				]
+			},
+			"minecraft:part_visibility": {
+				"rules": {
+					"n_to_s": "q.block_property('testblock:south')||q.block_property('testblock:north')&&!q.block_property('testblock:east')&&!q.block_property('testblock:west')",
+					"e_to_w": "q.block_property('testblock:west')||q.block_property('testblock:east')&&!q.block_property('testblock:north')&&!q.block_property('testblock:south')",
+					"e_to_s": "q.block_property('testblock:west')&&q.block_property('testblock:north')&&!q.block_property('testblock:east')&&!q.block_property('testblock:south')",
+					"w_to_s": "q.block_property('testblock:east')&&q.block_property('testblock:north')&&!q.block_property('testblock:west')&&!q.block_property('testblock:south')",
+					"e_to_n": "q.block_property('testblock:west')&&q.block_property('testblock:south')&&!q.block_property('testblock:north')&&!q.block_property('testblock:east')",
+					"w_to_n": "q.block_property('testblock:east')&&q.block_property('testblock:south')&&!q.block_property('testblock:west')&&!q.block_property('testblock:north')",
+					"n_w_s": "q.block_property('testblock:south')&&q.block_property('testblock:east')&&q.block_property('testblock:north')&&!q.block_property('testblock:west')",
+					"n_e_s": "q.block_property('testblock:south')&&q.block_property('testblock:west')&&q.block_property('testblock:north')&&!q.block_property('testblock:east')",
+					"e_n_w": "q.block_property('testblock:west')&&q.block_property('testblock:south')&&q.block_property('testblock:east')&&!q.block_property('testblock:north')",
+					"e_s_w": "q.block_property('testblock:west')&&q.block_property('testblock:north')&&q.block_property('testblock:east')&&!q.block_property('testblock:south')",
+					"n_e_s_w": "q.block_property('testblock:south')&&q.block_property('testblock:west')&&q.block_property('testblock:north')&&q.block_property('testblock:east')",
+					"main": "!q.block_property('testblock:north')&&!q.block_property('testblock:east')&&!q.block_property('testblock:south')&&!q.block_property('testblock:west')",
+					"t_n": "0",
+					"t_e": "0",
+					"t_s": "0",
+					"t_w": "0"
+				}
+			},
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [
+					0,
+					0
+				],
+				"on_tick": {
+					"event": "copper:update"
+				}
+			}
+		},
+		"events": {
+			"copper:update": {
+				"set_block_property": {
+					"testblock:north": "q.block_neighbor_has_any_tag(0,0,-1,'wire')?true:false",
+					"testblock:east": "q.block_neighbor_has_any_tag(1,0,0,'wire')?true:false",
+					"testblock:south": "q.block_neighbor_has_any_tag(0,0,1,'wire')?true:false",
+					"testblock:west": "q.block_neighbor_has_any_tag(-1,0,0,'wire')?true:false"
+				}
+			},
+			"copper:test": {
+				"run_command": {
+					"command": [
+						"say ticking"
+					]
+				}
+			}
+		}
+	}
+}

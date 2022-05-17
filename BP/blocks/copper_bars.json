@@ -1,0 +1,144 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:copper_bars",
+			"properties": {
+				"bar:over_north": [
+					false,
+					true
+				],
+				"bar:over_east": [
+					false,
+					true
+				],
+				"bar:over_south": [
+					false,
+					true
+				],
+				"bar:over_west": [
+					false,
+					true
+				]
+			}
+		},
+		"components": {
+			"tag:c_bar": {},
+			"minecraft:geometry": "geometry.bars",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "copper_bar",
+					"render_method": "blend",
+					"ambient_occlusion": false,
+					"face_dimming": false
+				}
+			},
+			"minecraft:part_visibility": {
+				"rules": {
+					"north": "q.block_property('bar:over_south')",
+					"east": "q.block_property('bar:over_west')",
+					"south": "q.block_property('bar:over_north')",
+					"west": "q.block_property('bar:over_east')",
+					"none": "!q.block_property('bar:over_south')&&!q.block_property('bar:over_west')&&!q.block_property('bar:over_north')&&!q.block_property('bar:over_east')"
+				}
+			},
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [
+					0,
+					0
+				],
+				"on_tick": {
+					"event": "bar:look_for_blocks"
+				}
+			}
+		},
+		"permutations": [
+			{
+				"condition": "q.block_property('bar:over_north')&&q.block_property('bar:over_east')&&q.block_property('bar:over_south')&&q.block_property('bar:over_west')",
+				"components": {
+					"minecraft:pick_collision": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							16,
+							16
+						]
+					},
+					"minecraft:entity_collision": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							16,
+							16
+						]
+					}
+				}
+			},
+			{
+				"condition": "!q.block_property('bar:over_north')&&!q.block_property('bar:over_east')&&!q.block_property('bar:over_south')&&!q.block_property('bar:over_west')",
+				"components": {
+					"minecraft:pick_collision": {
+						"origin": [
+							-1,
+							0,
+							-1
+						],
+						"size": [
+							2,
+							16,
+							2
+						]
+					},
+					"minecraft:entity_collision": {
+						"origin": [
+							-1,
+							0,
+							-1
+						],
+						"size": [
+							2,
+							16,
+							2
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_property('bar:over_north')&&!q.block_property('bar:over_east')&&!q.block_property('bar:over_south')&&!q.block_property('bar:over_west')",
+				"components": {
+					"minecraft:pick_collision": {
+						"origin": [
+							0,
+							0,
+							0
+						],
+						"size": [
+							2,
+							16,
+							8
+						]
+					}
+				}
+			}
+		],
+		"events": {
+			"bar:look_for_blocks": {
+				"set_block_property": {
+					"bar:over_north": "q.block_neighbor_has_any_tag(0,0,-1,'c_bar')?true:false",
+					"bar:over_east": "q.block_neighbor_has_any_tag(1,0,0,'c_bar')?true:false",
+					"bar:over_south": "q.block_neighbor_has_any_tag(0,0,1,'c_bar')?true:false",
+					"bar:over_west": "q.block_neighbor_has_any_tag(-1,0,0,'c_bar')?true:false"
+				}
+			}
+		}
+	}
+}

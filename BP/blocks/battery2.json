@@ -1,0 +1,550 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:batterydup"
+		},
+		"components": {
+			"minecraft:unit_cube": {},
+			"tag:wire": {},
+			"tag:csrc": {},
+			"tag:psrc": {},
+			"minecraft:ticking": {
+				"looping": true,
+				"on_tick": {
+					"event": "copper:power"
+				},
+				"range": [
+					0.1,
+					0.1
+				]
+			}
+		},
+		"events": {
+			"copper:power": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthzero')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthzero')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthzero')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthzero')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthone')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthone')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthone')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthone')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthtwo')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthtwo')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthtwo')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthtwo')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengththree')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengththree')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengththree')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengththree')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthfour')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthfour')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthfour')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthfour')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthfive')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthfive')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthfive')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthfive')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthsix')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthsix')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthsix')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthsix')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthseven')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthseven')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthseven')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthseven')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengtheight')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengtheight')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengtheight')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengtheight')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthnine')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthnine')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										-1,
+										0,
+										0
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthnine')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										1
+									],
+									"block_type": "parv:wire10"
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthnine')",
+								"weight": 1,
+								"set_block_at_pos": {
+									"block_offset": [
+										0,
+										0,
+										-1
+									],
+									"block_type": "parv:wire10"
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}

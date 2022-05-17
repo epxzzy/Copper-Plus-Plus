@@ -1,0 +1,498 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:wire8",
+			"properties": {
+				"wire8:north": [
+					false,
+					true
+				],
+				"wire8:east": [
+					false,
+					true
+				],
+				"wire8:south": [
+					false,
+					true
+				],
+				"wire8:west": [
+					false,
+					true
+				]
+			}
+		},
+		"components": {
+			"tag:wire": {},
+			"tag:dust": {},
+			"tag:strengtheight": {},
+			"tag:cwire": {},
+			"minecraft:geometry": "geometry.wire",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "wire_map_8",
+					"render_method": "alpha_test",
+					"ambient_occlusion": false
+				}
+			},
+			"minecraft:block_light_absorption": 0,
+			"minecraft:breathability": "air",
+			"minecraft:unwalkable": true,
+			"minecraft:entity_collision": false,
+			"minecraft:pick_collision": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					1,
+					16
+				]
+			},
+			"minecraft:on_interact": {
+				"event": "wire8:detect"
+			},
+			"minecraft:part_visibility": {
+				"rules": {
+					"n_to_s": "q.block_property('wire8:south')||q.block_property('wire8:north')&&!q.block_property('wire8:east')&&!q.block_property('wire8:west')",
+					"e_to_w": "q.block_property('wire8:west')||q.block_property('wire8:east')&&!q.block_property('wire8:north')&&!q.block_property('wire8:south')",
+					"e_to_s": "q.block_property('wire8:west')&&q.block_property('wire8:north')&&!q.block_property('wire8:east')&&!q.block_property('wire8:south')",
+					"w_to_s": "q.block_property('wire8:east')&&q.block_property('wire8:north')&&!q.block_property('wire8:west')&&!q.block_property('wire8:south')",
+					"e_to_n": "q.block_property('wire8:west')&&q.block_property('wire8:south')&&!q.block_property('wire8:north')&&!q.block_property('wire8:east')",
+					"w_to_n": "q.block_property('wire8:east')&&q.block_property('wire8:south')&&!q.block_property('wire8:west')&&!q.block_property('wire8:north')",
+					"n_w_s": "q.block_property('wire8:south')&&q.block_property('wire8:east')&&q.block_property('wire8:north')&&!q.block_property('wire8:west')",
+					"n_e_s": "q.block_property('wire8:south')&&q.block_property('wire8:west')&&q.block_property('wire8:north')&&!q.block_property('wire8:east')",
+					"e_n_w": "q.block_property('wire8:west')&&q.block_property('wire8:south')&&q.block_property('wire8:east')&&!q.block_property('wire8:north')",
+					"e_s_w": "q.block_property('wire8:west')&&q.block_property('wire8:north')&&q.block_property('wire8:east')&&!q.block_property('wire8:south')",
+					"n_e_s_w": "q.block_property('wire8:south')&&q.block_property('wire8:west')&&q.block_property('wire8:north')&&q.block_property('wire8:east')",
+					"main": "!q.block_property('wire8:north')&&!q.block_property('wire8:east')&&!q.block_property('wire8:south')&&!q.block_property('wire8:west')",
+					"t_n": "0",
+					"t_e": "0",
+					"t_s": "0",
+					"t_w": "0"
+				}
+			},
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [
+					0,
+					0
+				],
+				"on_tick": {
+					"event": "wire8:tick"
+				}
+			}
+		},
+		"events": {
+			"wire8:tick": {
+				"sequence": [
+					{
+						"trigger": "wire8:update"
+					},
+					{
+						"trigger": "wire8:conduct"
+					}
+				]
+			},
+			"wire8:placed": {
+				"set_block_property": {
+					"wire8:isready": false
+				}
+			},
+			"wire8:update": {
+				"set_block_property": {
+					"wire8:north": "q.block_neighbor_has_any_tag(0,0,-1,'wire')?true:false",
+					"wire8:east": "q.block_neighbor_has_any_tag(1,0,0,'wire')?true:false",
+					"wire8:south": "q.block_neighbor_has_any_tag(0,0,1,'wire')?true:false",
+					"wire8:west": "q.block_neighbor_has_any_tag(-1,0,0,'wire')?true:false"
+				}
+			},
+			"wire8:conduct": {
+				"sequence": [
+					{
+						"trigger": "wire8:unpower"
+					},
+					{
+						"trigger": "wire8:power"
+					}
+				]
+			},
+			"wire8:detect": {
+				"run_command": {
+					"command": [
+						"execute @a[r=2] ~~~ title @s actionbar §bpower:§e8"
+					]
+				}
+			},
+			"wire8:spark": {
+				"randomize": [
+					{
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 5
+					},
+					{
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 4
+					},
+					{
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 3
+					}
+				]
+			},
+			"wire8:power": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire7"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire7"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire7"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire7"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire7"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire7"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire7"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire7"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"wire8:unpower": {
+				"sequence": [
+					{
+						"condition": "!q.block_neighbor_has_any_tag(1,0,0,'strengthnine')&&!q.block_neighbor_has_any_tag(-1,0,0,'strengthnine')&&!q.block_neighbor_has_any_tag(0,0,1,'strengthnine')&&!q.block_neighbor_has_any_tag(0,0,-1,'strengthnine')",
+						"weight": 1,
+						"run_command": {
+							"command": [
+								"setblock ~~~ parv:wire0"
+							]
+						}
+					},
+					{
+						"condition": "!q.block_neighbor_has_any_tag(1,0,0,'cwire')&&!q.block_neighbor_has_any_tag(-1,0,0,'cwire')&&!q.block_neighbor_has_any_tag(0,0,1,'cwire')&&!q.block_neighbor_has_any_tag(0,0,-1,'cwire')",
+						"weight": 1,
+						"run_command": {
+							"command": [
+								"setblock ~~~ parv:wire0"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

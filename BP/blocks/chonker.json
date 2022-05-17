@@ -1,0 +1,41 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:chonker"
+		},
+		"components": {
+			"minecraft:unit_cube": {},
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "invis",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:on_placed": {
+				"event": "block:placed"
+			},
+			"minecraft:on_player_destroyed": {
+				"event": "block:destroyed"
+			}
+		},
+		"events": {
+			"block:placed": {
+				"run_command": {
+					"command": [
+						"summon parv:chonkester ~~~",
+						"say block deployed"
+					]
+				}
+			},
+			"block:destroyed": {
+				"run_command": {
+					"command": [
+						"execute @s ~~~ kill @e[type=parv:chonkester,r=1,]",
+						"say block destroyed"
+					]
+				}
+			}
+		}
+	}
+}

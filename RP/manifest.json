@@ -6,16 +6,16 @@
 		],
 		"generated_with": {
 			"bridge": [
-				"2.2.6"
+				"2.2.9"
 			],
 			"dash": [
-				"0.8.9"
+				"0.8.11"
 			]
 		}
 	},
 	"header": {
 		"name": "cpp",
-		"description": "copper plus plus beta 0.1",
+		"description": "copper plus plus beta 0.05",
 		"min_engine_version": [
 			1,
 			18,

@@ -1,0 +1,533 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:wire9",
+			"properties": {
+				"wire9:north": [
+					false,
+					true
+				],
+				"wire9:east": [
+					false,
+					true
+				],
+				"wire9:south": [
+					false,
+					true
+				],
+				"wire9:west": [
+					false,
+					true
+				]
+			}
+		},
+		"components": {
+			"tag:wire": {},
+			"tag:dust": {},
+			"tag:strengthnine": {},
+			"tag:cwire": {},
+			"minecraft:geometry": "geometry.wire",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "wire_map_9",
+					"render_method": "alpha_test",
+					"ambient_occlusion": false
+				}
+			},
+			"minecraft:block_light_absorption": 0,
+			"minecraft:breathability": "air",
+			"minecraft:unwalkable": true,
+			"minecraft:entity_collision": false,
+			"minecraft:pick_collision": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					1,
+					16
+				]
+			},
+			"minecraft:on_interact": {
+				"event": "wire9:detect"
+			},
+			"minecraft:part_visibility": {
+				"rules": {
+					"n_to_s": "q.block_property('wire9:south')||q.block_property('wire9:north')&&!q.block_property('wire9:east')&&!q.block_property('wire9:west')",
+					"e_to_w": "q.block_property('wire9:west')||q.block_property('wire9:east')&&!q.block_property('wire9:north')&&!q.block_property('wire9:south')",
+					"e_to_s": "q.block_property('wire9:west')&&q.block_property('wire9:north')&&!q.block_property('wire9:east')&&!q.block_property('wire9:south')",
+					"w_to_s": "q.block_property('wire9:east')&&q.block_property('wire9:north')&&!q.block_property('wire9:west')&&!q.block_property('wire9:south')",
+					"e_to_n": "q.block_property('wire9:west')&&q.block_property('wire9:south')&&!q.block_property('wire9:north')&&!q.block_property('wire9:east')",
+					"w_to_n": "q.block_property('wire9:east')&&q.block_property('wire9:south')&&!q.block_property('wire9:west')&&!q.block_property('wire9:north')",
+					"n_w_s": "q.block_property('wire9:south')&&q.block_property('wire9:east')&&q.block_property('wire9:north')&&!q.block_property('wire9:west')",
+					"n_e_s": "q.block_property('wire9:south')&&q.block_property('wire9:west')&&q.block_property('wire9:north')&&!q.block_property('wire9:east')",
+					"e_n_w": "q.block_property('wire9:west')&&q.block_property('wire9:south')&&q.block_property('wire9:east')&&!q.block_property('wire9:north')",
+					"e_s_w": "q.block_property('wire9:west')&&q.block_property('wire9:north')&&q.block_property('wire9:east')&&!q.block_property('wire9:south')",
+					"n_e_s_w": "q.block_property('wire9:south')&&q.block_property('wire9:west')&&q.block_property('wire9:north')&&q.block_property('wire9:east')",
+					"main": "!q.block_property('wire9:north')&&!q.block_property('wire9:east')&&!q.block_property('wire9:south')&&!q.block_property('wire9:west')",
+					"t_n": "0",
+					"t_e": "0",
+					"t_s": "0",
+					"t_w": "0"
+				}
+			},
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [
+					0,
+					0
+				],
+				"on_tick": {
+					"event": "wire9:tick"
+				}
+			}
+		},
+		"events": {
+			"wire9:tick": {
+				"sequence": [
+					{
+						"trigger": "wire9:update"
+					},
+					{
+						"trigger": "wire9:conduct"
+					}
+				]
+			},
+			"wire9:update": {
+				"set_block_property": {
+					"wire9:north": "q.block_neighbor_has_any_tag(0,0,-1,'wire')?true:false",
+					"wire9:east": "q.block_neighbor_has_any_tag(1,0,0,'wire')?true:false",
+					"wire9:south": "q.block_neighbor_has_any_tag(0,0,1,'wire')?true:false",
+					"wire9:west": "q.block_neighbor_has_any_tag(-1,0,0,'wire')?true:false"
+				}
+			},
+			"wire9:conduct": {
+				"sequence": [
+					{
+						"trigger": "wire9:unpower"
+					},
+					{
+						"trigger": "wire9:power"
+					}
+				]
+			},
+			"wire9:detect": {
+				"run_command": {
+					"command": [
+						"execute @a[r=2] ~~~ title @s actionbar §bpower:§a9"
+					]
+				}
+			},
+			"wire9:spark": {
+				"randomize": [
+					{
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 8
+					},
+					{
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 4
+					},
+					{
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 1
+					}
+				]
+			},
+			"wire9:power": {
+				"sequence": [
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthtwo')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengththree')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthfour')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthfive')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthsix')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					},
+					{
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthseven')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthseven')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthseven')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire8"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthseven')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire8"
+									]
+								}
+							}
+						]
+					}
+				]
+			},
+			"wire9:unpower": {
+				"sequence": [
+					{
+						"condition": "!q.block_neighbor_has_any_tag(1,0,0,'strengthten')&&!q.block_neighbor_has_any_tag(-1,0,0,'strengthten')&&!q.block_neighbor_has_any_tag(0,0,1,'strengthten')&&!q.block_neighbor_has_any_tag(0,0,-1,'strengthten')",
+						"weight": 1,
+						"run_command": {
+							"command": [
+								"setblock ~~~ parv:wire0"
+							]
+						}
+					},
+					{
+						"condition": "!q.block_neighbor_has_any_tag(1,0,0,'cwire')&&!q.block_neighbor_has_any_tag(-1,0,0,'cwire')&&!q.block_neighbor_has_any_tag(0,0,1,'cwire')&&!q.block_neighbor_has_any_tag(0,0,-1,'cwire')",
+						"weight": 1,
+						"run_command": {
+							"command": [
+								"setblock ~~~ parv:wire0"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

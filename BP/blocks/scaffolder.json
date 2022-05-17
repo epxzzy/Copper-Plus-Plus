@@ -1,0 +1,21 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "parv:scaffolder"
+		},
+		"components": {
+			"tag:cwire": {},
+			"tag:wire": {},
+			"tag:csrc": {},
+			"tag:psrc": {},
+			"minecraft:unit_cube": {},
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "parv_scaffolder",
+					"render_method": "opaque"
+				}
+			}
+		}
+	}
+}

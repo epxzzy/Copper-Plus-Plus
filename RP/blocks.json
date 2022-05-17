@@ -4,15 +4,48 @@
 		1,
 		0
 	],
+	"parv:shifter": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
+	"parv:battery": {
+		"textures": "battery",
+		"sound": "calcite"
+	},
+	"parv:chonker": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
+	"parv:swimmer": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
+	"parv:sprinter": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
+	"parv:shielder": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
+	"parv:firer": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
+	"parv:sleeper": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
+	"parv:jumper": {
+		"textures": "invis",
+		"sound": "calcite"
+	},
 	"parv:copper_pillar": {
 		"sound": "stone",
 		"textures": {
-			"down": "polished_basalt_top",
-			"side": "polished_basalt_side",
-			"up": "polished_basalt_top"
+			"down": "copper_pillar_bottom",
+			"side": "copper_pillar",
+			"up": "copper_pillar_bottom"
 		}
-	},
-	"parv:aaa": {
-		"sound": "wood"
 	}
 }

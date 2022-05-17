@@ -1,0 +1,205 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.checkshift": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s shifter:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.sns = 0;v.snf = 0; for_each(v.player, query.get_nearby_entities(8, 'minecraft:player'), { v.snf = v.snf + v.player->(q.is_sneaking);}); return v.snf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s shifter:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.snf = 0;v.sns = 0; for_each(v.player, query.get_nearby_entities(8, 'minecraft:player'), { v.sns = v.sns + v.player->(!q.is_sneaking);}); return v.sns;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.checkchonk": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s chonker:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.sns = 0;v.snf = 0; for_each(v.player, query.get_nearby_entities(8, 'minecraft:player'), { v.snf = v.snf + v.player->(q.is_eating);}); return v.snf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s chonker:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.snf = 0;v.sns = 0; for_each(v.player, query.get_nearby_entities(8, 'minecraft:player'), { v.sns = v.sns + v.player->(!q.is_eating);}); return v.sns;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.checkjump": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s jumper:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.ets = 0;v.etf = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.etf = v.etf + v.player->(q.is_jumping);}); return v.etf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s jumper:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.etf = 0;v.ets = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.ets = v.ets + v.player->(!q.is_jumping);}); return v.ets;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.checkshield": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s shielder:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.ets = 0;v.etf = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.etf = v.etf + v.player->(q.blocking&&query.get_equipped_item_name == 'shield');}); return v.etf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s shielder:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.etf = 0;v.ets = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.ets = v.ets + v.player->(!q.blocking&&query.query.get_equipped_item_name == 'shield');}); return v.ets;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.checksprint": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s sprinter:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.ets = 0;v.etf = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.etf = v.etf + v.player->(q.is_sprinting);}); return v.etf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s sprinter:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.etf = 0;v.ets = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.ets = v.ets + v.player->(!q.is_sprinting);}); return v.ets;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.checksleep": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s sleeper:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.ets = 0;v.etf = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.etf = v.etf + v.player->(q.is_sleeping);}); return v.etf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s sleeper:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.etf = 0;v.ets = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.ets = v.ets + v.player->(!q.is_sleeping);}); return v.ets;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.checkswim": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s swimmer:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.ets = 0;v.etf = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.etf = v.etf + v.player->(q.is_swimming);}); return v.etf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s swimmer:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.etf = 0;v.ets = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.ets = v.ets + v.player->(!q.is_swimming);}); return v.ets;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.checkhot": {
+			"initial_state": "unpowered",
+			"states": {
+				"unpowered": {
+					"on_entry": [
+						"@s hotter:deactivate"
+					],
+					"transitions": [
+						{
+							"powered": "v.ets = 0;v.etf = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.etf = v.etf + v.player->(q.is_on_fire);}); return v.etf;"
+						}
+					]
+				},
+				"powered": {
+					"on_entry": [
+						"@s hotter:activate"
+					],
+					"transitions": [
+						{
+							"unpowered": "v.etf = 0;v.ets = 0; for_each(v.player, query.get_nearby_entities(7, 'minecraft:player'), { v.ets = v.ets + v.player->(!q.is_on_fire);}); return v.ets;"
+						}
+					]
+				}
+			}
+		}
+	}
+}

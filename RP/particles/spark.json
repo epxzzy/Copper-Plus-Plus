@@ -68,7 +68,7 @@
 			"minecraft:particle_motion_collision": {
 				"collision_drag": 2,
 				"coefficient_of_restitution": 5,
-				"collision_radius": 0.1
+				"collision_radius": 0.05
 			}
 		}
 	}

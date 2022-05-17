@@ -19,6 +19,24 @@
 		"wire_map_4": {
 			"textures": "textures/blocks/wire_map_4"
 		},
+		"wire_map_5": {
+			"textures": "textures/blocks/wire_map_5"
+		},
+		"wire_map_6": {
+			"textures": "textures/blocks/wire_map_6"
+		},
+		"wire_map_7": {
+			"textures": "textures/blocks/wire_map_7"
+		},
+		"wire_map_8": {
+			"textures": "textures/blocks/wire_map_8"
+		},
+		"wire_map_9": {
+			"textures": "textures/blocks/wire_map_9"
+		},
+		"wire_map_10": {
+			"textures": "textures/blocks/wire_map_10"
+		},
 		"copper_pillar": {
 			"textures": "textures/blocks/pillar/copper_pillar"
 		},
@@ -43,8 +61,32 @@
 		"oxidised_pillar_bottom": {
 			"textures": "textures/blocks/pillar/oxidized_copper_pillar"
 		},
-		"parv_charged_rod": {
-			"textures": "textures/blocks/charged_rod"
+		"shifter": {
+			"textures": "textures/blocks/shift_tester"
+		},
+		"chonker": {
+			"textures": "textures/blocks/chonk_tester"
+		},
+		"battery": {
+			"textures": "textures/blocks/cactus_bottom"
+		},
+		"cepeater_on": {
+			"textures": "textures/blocks/cepeater_on"
+		},
+		"cepeater_off": {
+			"textures": "textures/blocks/cepeater_off"
+		},
+		"invis": {
+			"textures": "textures/blocks/invis"
+		},
+		"parv_copper_bars": {
+			"textures": "textures/blocks/copper_bars"
+		},
+		"parv_scaffolder": {
+			"textures": "textures/blocks/scaffolder"
+		},
+		"copper_bar": {
+			"textures": "textures/blocks/copper_bars"
 		}
 	}
 }

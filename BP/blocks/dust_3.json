@@ -4,51 +4,19 @@
 		"description": {
 			"identifier": "parv:wire3",
 			"properties": {
-				"block:north": [
+				"wire3:north": [
 					false,
 					true
 				],
-				"block:east": [
+				"wire3:east": [
 					false,
 					true
 				],
-				"block:south": [
+				"wire3:south": [
 					false,
 					true
 				],
-				"block:west": [
-					false,
-					true
-				],
-				"block:upnorth": [
-					false,
-					true
-				],
-				"block:upeast": [
-					false,
-					true
-				],
-				"block:upsouth": [
-					false,
-					true
-				],
-				"block:upwest": [
-					false,
-					true
-				],
-				"block:downnorth": [
-					false,
-					true
-				],
-				"block:downeast": [
-					false,
-					true
-				],
-				"block:downsouth": [
-					false,
-					true
-				],
-				"block:downwest": [
+				"wire3:west": [
 					false,
 					true
 				]
@@ -56,46 +24,19 @@
 		},
 		"components": {
 			"tag:wire": {},
+			"tag:dust": {},
 			"tag:strengththree": {},
-			"minecraft:geometry": "geometry.copper_wire",
+			"tag:cwire": {},
+			"minecraft:geometry": "geometry.wire",
 			"minecraft:material_instances": {
 				"*": {
-					"texture": "wire_map_1",
+					"texture": "wire_map_3",
 					"render_method": "alpha_test",
 					"ambient_occlusion": false
 				}
 			},
 			"minecraft:block_light_absorption": 0,
 			"minecraft:breathability": "air",
-			"minecraft:part_visibility": {
-				"rules": {
-					"n_to_s": "q.block_property('block:south')||q.block_property('block:north')&&!q.block_property('block:east')&&!q.block_property('block:west')",
-					"e_to_w": "q.block_property('block:west')||q.block_property('block:east')&&!q.block_property('block:north')&&!q.block_property('block:south')",
-					/*straight^^^*/
-					"e_to_s": "q.block_property('block:west')&&q.block_property('block:north')&&!q.block_property('block:east')&&!q.block_property('block:south')",
-					"w_to_s": "q.block_property('block:east')&&q.block_property('block:north')&&!q.block_property('block:west')&&!q.block_property('block:south')",
-					"e_to_n": "q.block_property('block:west')&&q.block_property('block:south')&&!q.block_property('block:north')&&!q.block_property('block:east')",
-					"w_to_n": "q.block_property('block:east')&&q.block_property('block:south')&&!q.block_property('block:west')&&!q.block_property('block:north')",
-					/*curves^^^*/
-					"n_w_s": "q.block_property('block:south')&&q.block_property('block:east')&&q.block_property('block:north')&&!q.block_property('block:west')",
-					"n_e_s": "q.block_property('block:south')&&q.block_property('block:west')&&q.block_property('block:north')&&!q.block_property('block:east')",
-					"e_n_w": "q.block_property('block:west')&&q.block_property('block:south')&&q.block_property('block:east')&&!q.block_property('block:north')",
-					"e_s_w": "q.block_property('block:east')&&q.block_property('block:north')&&q.block_property('block:east')&&!q.block_property('block:south')",
-					/*triplecurves^^^*/
-					"n_e_s_w": "q.block_property('block:south')&&q.block_property('block:east')&&q.block_property('block:north')&&q.block_property('block:east')",
-					"main": "!q.block_property('block:north')&&!q.block_property('block:east')&&!q.block_property('block:south')&&!q.block_property('block:west')"
-				}
-			},
-			"minecraft:ticking": {
-				"looping": true,
-				"on_tick": {
-					"event": "copper:update"
-				},
-				"range": [
-					0,
-					0
-				]
-			},
 			"minecraft:unwalkable": true,
 			"minecraft:entity_collision": false,
 			"minecraft:pick_collision": {
@@ -110,243 +51,238 @@
 					16
 				]
 			},
-			"minecraft:on_placed": {}
+			"minecraft:on_interact": {
+				"event": "wire3:detect"
+			},
+			"minecraft:part_visibility": {
+				"rules": {
+					"n_to_s": "q.block_property('wire4:south')||q.block_property('wire4:north')&&!q.block_property('wire4:east')&&!q.block_property('wire4:west')",
+					"e_to_w": "q.block_property('wire4:west')||q.block_property('wire4:east')&&!q.block_property('wire4:north')&&!q.block_property('wire4:south')",
+					"e_to_s": "q.block_property('wire4:west')&&q.block_property('wire4:north')&&!q.block_property('wire4:east')&&!q.block_property('wire4:south')",
+					"w_to_s": "q.block_property('wire4:east')&&q.block_property('wire4:north')&&!q.block_property('wire4:west')&&!q.block_property('wire4:south')",
+					"e_to_n": "q.block_property('wire4:west')&&q.block_property('wire4:south')&&!q.block_property('wire4:north')&&!q.block_property('wire4:east')",
+					"w_to_n": "q.block_property('wire4:east')&&q.block_property('wire4:south')&&!q.block_property('wire4:west')&&!q.block_property('wire4:north')",
+					"n_w_s": "q.block_property('wire4:south')&&q.block_property('wire4:east')&&q.block_property('wire4:north')&&!q.block_property('wire4:west')",
+					"n_e_s": "q.block_property('wire4:south')&&q.block_property('wire4:west')&&q.block_property('wire4:north')&&!q.block_property('wire4:east')",
+					"e_n_w": "q.block_property('wire4:west')&&q.block_property('wire4:south')&&q.block_property('wire4:east')&&!q.block_property('wire4:north')",
+					"e_s_w": "q.block_property('wire4:west')&&q.block_property('wire4:north')&&q.block_property('wire4:east')&&!q.block_property('wire4:south')",
+					"n_e_s_w": "q.block_property('wire4:south')&&q.block_property('wire4:west')&&q.block_property('wire4:north')&&q.block_property('wire4:east')",
+					"main": "!q.block_property('wire4:north')&&!q.block_property('wire4:east')&&!q.block_property('wire4:south')&&!q.block_property('wire4:west')",
+					"t_n": "0",
+					"t_e": "0",
+					"t_s": "0",
+					"t_w": "0"
+				}
+			},
+			"minecraft:ticking": {
+				"looping": true,
+				"range": [
+					0,
+					0
+				],
+				"on_tick": {
+					"event": "wire3:tick"
+				}
+			}
 		},
 		"events": {
-			"copper:update": {
-				"set_block_property": {
-					/*main*/
-					"block:north": "q.block_neighbor_has_any_tag(~0,~0,~-1,'wire')?true:false",
-					"block:east": "q.block_neighbor_has_any_tag(~1,~0,~0,'wire')?true:false",
-					"block:south": "q.block_neighbor_has_any_tag(~0,~0,~1,'wire')?true:false",
-					"block:west": "q.block_neighbor_has_any_tag(~-1,~0,~0,'wire')?true:false",
-					/*up*/
-					"block:upnorth": "q.block_neighbor_has_any_tag(~0,~1,~-1,'wire')?true:false",
-					"block:upeast": "q.block_neighbor_has_any_tag(~1,~1,~0,'wire')?true:false",
-					"block:upsouth": "q.block_neighbor_has_any_tag(~0,~1,~1,'wire')?true:false",
-					"block:upwest": "q.block_neighbor_has_any_tag(~-1,~1,~0,'wire')?true:false",
-					/*down*/
-					"block:downnorth": "q.block_neighbor_has_any_tag(~0,~-1,~-1,'wire')?true:false",
-					"block:downeast": "q.block_neighbor_has_any_tag(~1,~-1,~0,'wire')?true:false",
-					"block:downsouth": "q.block_neighbor_has_any_tag(~0,~-1,~1,'wire')?true:false",
-					"block:downwest": "q.block_neighbor_has_any_tag(~-1,~-1,~0,'wire')?true:false"
-				},
-				"run_command": {
-					"command": "execute @s ~~~ detect ~~-1~ air 0 setblock ~~~ air 0 destroy"
-				},
+			"wire3:tick": {
 				"sequence": [
 					{
-						"trigger": "copper:conduct_src"
+						"trigger": "wire3:update"
 					},
 					{
-						"trigger": "copper:conduct_3"
-					},
-					{
-						"trigger": "copper:conduct_2"
-					},
-					{
-						"trigger": "copper:conduct_1"
-					},
-					{
-						"trigger": "copper:conduct_0"
+						"trigger": "wire3:conduct"
 					}
 				]
 			},
-			"copper:conduct_0": {
-				"randomize": [
+			"wire3:update": {
+				"set_block_property": {
+					"wire3:north": "q.block_neighbor_has_any_tag(0,0,-1,'wire')?true:false",
+					"wire3:east": "q.block_neighbor_has_any_tag(1,0,0,'wire')?true:false",
+					"wire3:south": "q.block_neighbor_has_any_tag(0,0,1,'wire')?true:false",
+					"wire3:west": "q.block_neighbor_has_any_tag(-1,0,0,'wire')?true:false"
+				}
+			},
+			"wire3:conduct": {
+				"sequence": [
 					{
-						"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthone')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire0"
-							]
-						}
+						"trigger": "wire3:unpower"
 					},
 					{
-						"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthone')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire0"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthone')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire0"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthone')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire0"
-							]
-						}
+						"trigger": "wire3:power"
 					}
 				]
 			},
-			"copper:conduct_1": {
+			"wire3:detect": {
+				"run_command": {
+					"command": [
+						"execute @a[r=2] ~~~ title @s actionbar §bpower:§c3"
+					]
+				}
+			},
+			"wire3:spark": {
 				"randomize": [
 					{
-						"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthtwo')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire1"
-							]
-						}
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 5
 					},
 					{
-						"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthtwo')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire1"
-							]
-						}
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							},
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 4
 					},
 					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthtwo')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire1"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthtwo')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire1"
-							]
-						}
+						"sequence": [
+							{
+								"run_command": {
+									"command": [
+										"particle parv:spark ~~-1~"
+									]
+								}
+							}
+						],
+						"weight": 3
 					}
 				]
 			},
-			"copper:conduct_2": {
-				"randomize": [
+			"wire3:power": {
+				"sequence": [
 					{
-						"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengththree')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire2"
-							]
-						}
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire2"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire2"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire2"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthzero')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire2"
+									]
+								}
+							}
+						]
 					},
 					{
-						"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengththree')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire2"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengththree')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire2"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengththree')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire2"
-							]
-						}
+						"randomize": [
+							{
+								"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~1 ~ ~ parv:wire2"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~-1 ~ ~ parv:wire2"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~1 parv:wire2"
+									]
+								}
+							},
+							{
+								"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthone')",
+								"weight": 1,
+								"run_command": {
+									"command": [
+										"setblock ~ ~ ~-1 parv:wire2"
+									]
+								}
+							}
+						]
 					}
 				]
 			},
-			"copper:conduct_3": {
-				"randomize": [
+			"wire3:unpower": {
+				"sequence": [
 					{
-						"condition": "q.block_neighbor_has_any_tag(1,0,0,'strengthfour')",
+						"condition": "!q.block_neighbor_has_any_tag(1,0,0,'strengthfour')&&!q.block_neighbor_has_any_tag(-1,0,0,'strengthfour')&&!q.block_neighbor_has_any_tag(0,0,1,'strengthfour')&&!q.block_neighbor_has_any_tag(0,0,-1,'strengthfour')",
 						"weight": 1,
 						"run_command": {
 							"command": [
-								"setblock ~ ~ ~ parv:wire3"
+								"setblock ~~~ parv:wire0"
 							]
 						}
 					},
 					{
-						"condition": "q.block_neighbor_has_any_tag(-1,0,0,'strengthfour')",
+						"condition": "!q.block_neighbor_has_any_tag(1,0,0,'cwire')&&!q.block_neighbor_has_any_tag(-1,0,0,'cwire')&&!q.block_neighbor_has_any_tag(0,0,1,'cwire')&&!q.block_neighbor_has_any_tag(0,0,-1,'cwire')",
 						"weight": 1,
 						"run_command": {
 							"command": [
-								"setblock ~ ~ ~ parv:wire3"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,1,'strengthfour')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire3"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,-1,'strengthfour')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire3"
-							]
-						}
-					}
-				]
-			},
-			"copper:conduct_src": {
-				"randomize": [
-					{
-						"condition": "q.block_neighbor_has_any_tag(1,0,0,'csource')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire4"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(-1,0,0,'csource')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire4"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,1,'csource')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire4"
-							]
-						}
-					},
-					{
-						"condition": "q.block_neighbor_has_any_tag(0,0,-1,'csource')",
-						"weight": 1,
-						"run_command": {
-							"command": [
-								"setblock ~ ~ ~ parv:wire4"
+								"setblock ~~~ parv:wire0"
 							]
 						}
 					}

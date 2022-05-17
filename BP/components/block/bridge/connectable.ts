@@ -76,7 +76,7 @@ export default defineComponent(({ name, template, schema }) => {
 		directions.map((dir: string) => {
 			create(
 				{
-					[`bridge:${dir}_neighbor`]: [ false, true ]
+					[`parv:${dir}_neighbor`]: [ false, true ]
 				},
 				'minecraft:block/description/properties'
 			)
@@ -87,9 +87,9 @@ export default defineComponent(({ name, template, schema }) => {
 				create(
 					{
 						...(part.directions.length === 1 ? {
-							[part.name]: `q.block_property('bridge:${part.directions}_neighbor')`
+							[part.name]: `q.block_property('parv:${part.directions}_neighbor')`
 						} : {
-							[part.name]: `${part.directions.map((dir: string) => `q.block_property('bridge:${dir}_neighbor')`).join('&&')}`
+							[part.name]: `${part.directions.map((dir: string) => `q.block_property('parv:${dir}_neighbor')`).join('&&')}`
 						})
 					},
 					'minecraft:block/components/minecraft:part_visibility/rules'
@@ -102,9 +102,9 @@ export default defineComponent(({ name, template, schema }) => {
 				{
 					permutations: geometries.map(geo => ({
 						...(geo.directions.length === 1 ? {
-							condition: `q.block_property('bridge:${geo.directions}_neighbor')`
+							condition: `q.block_property('parv:${geo.directions}_neighbor')`
 						} : {
-							condition: `${geo.directions.map((dir: string) => `q.block_property('bridge:${dir}_neighbor')`).join('&&')}`
+							condition: `${geo.directions.map((dir: string) => `q.block_property('parv:${dir}_neighbor')`).join('&&')}`
 						}),
 						components: {
 							'minecraft:geometry': geo.name,
@@ -132,7 +132,7 @@ export default defineComponent(({ name, template, schema }) => {
 		directions.map((dir: string) => {
 			create(
 				{
-					[`bridge:${dir}_neighbor`]: `q.block_neighbor_has_any_tag(${positions.get(dir)}, '${tag}') ? true : false`
+					[`parv:${dir}_neighbor`]: `q.block_neighbor_has_any_tag(${positions.get(dir)}, '${tag}') ? true : false`
 				},
 				'minecraft:block/events/e:update.neighbors/set_block_property'
 			)

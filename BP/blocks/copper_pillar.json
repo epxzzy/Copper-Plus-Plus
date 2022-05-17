@@ -1,11 +1,50 @@
 {
-	"format_version": "1.18.10",
+	"format_version": "1.18.0",
 	"minecraft:block": {
 		"description": {
-			"identifier": "parv:copper_pillar"
+			"identifier": "parv:copper_pillar",
+			"properties": {
+				"parv:pillar_axis": [
+					0,
+					1,
+					2
+				]
+			}
 		},
+		"permutations": [
+			{
+				"condition": "query.block_property('parv:pillar_axis') == 0",
+				"components": {}
+			},
+			{
+				"condition": "query.block_property('parv:pillar_axis') == 1",
+				"components": {
+					"minecraft:rotation": [
+						90,
+						0,
+						0
+					],
+					"minecraft:unit_cube": {}
+				}
+			},
+			{
+				"condition": "query.block_property('parv:pillar_axis') == 2",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						90,
+						-90
+					],
+					"minecraft:unit_cube": {}
+				}
+			}
+		],
 		"components": {
 			"minecraft:material_instances": {
+				"*": {
+					"texture": "copper_pillar",
+					"render_method": "opaque"
+				},
 				"down": {
 					"texture": "copper_pillar_bottom",
 					"render_method": "opaque"
@@ -13,15 +52,19 @@
 				"up": {
 					"texture": "copper_pillar_bottom",
 					"render_method": "opaque"
-				},
-				"sides": {
-					"texture": "copper_pillar"
 				}
 			},
-			"bridge:log_rotate_on_place": {
-				"rotation_from": "block_face"
-			},
-			"minecraft:unit_cube": {}
+			"minecraft:on_player_placing": {
+				"event": "on_player_placing",
+				"target": "self"
+			}
+		},
+		"events": {
+			"on_player_placing": {
+				"set_block_property": {
+					"parv:pillar_axis": "math.floor(query.block_face/2)"
+				}
+			}
 		}
 	}
 }
